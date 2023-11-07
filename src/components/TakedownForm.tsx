@@ -19,13 +19,16 @@ import { Textarea } from './ui/textarea';
 
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog';
 import { Switch } from './ui/switch';
+import CopyButton from './ui/CopyButton';
 
 const TakedownForm = () => {
   return (
     <>
-      <Card className="w-auto relative">
+      <Card className="w-[70%] relative">
         <CardHeader>
-          <CardTitle>Takedown Form</CardTitle>
+          <CardTitle>
+            <span className="text-[#E51015]">Takedown </span>Form
+          </CardTitle>
           <CardDescription>Enter takedown details</CardDescription>
 
           <div className="absolute right-8">
@@ -55,7 +58,9 @@ const TakedownForm = () => {
                       </Select>
                     </div>
 
-                    <Button>Submit</Button>
+                    <Button className="bg-[#e11318]/90 hover:bg-[#E51015]">
+                      Submit
+                    </Button>
                   </div>
                 </DialogContent>
               </Dialog>
@@ -65,21 +70,38 @@ const TakedownForm = () => {
 
         <CardContent>
           <form>
-            <div className="grid w-full items-center gap-4">
+            <div className="grid w-full items-center gap-6">
               <div className="flex flex-row gap-8">
-                <div>
-                  <Label htmlFor="name">Infringing Content</Label>
-                  <Input id="name" placeholder="Name of your project" />
+                <div className="basis-1/2">
+                  <Label htmlFor="name">
+                    Infringing Content{' '}
+                    <span className="text-xs italic font-normal">
+                      (Where is the infringing content?)
+                    </span>
+                  </Label>
+                  <Input
+                    id="name"
+                    placeholder="http://www.website-that-stole-your-content.com"
+                  />
                 </div>
 
-                <div>
-                  <Label htmlFor="name">Brand Content</Label>
-                  <Input id="name" placeholder="Name of your project" />
+                <div className="basis-1/2">
+                  <Label htmlFor="name">
+                    Brand Content{' '}
+                    <span className="text-xs italic font-normal">
+                      (Where is the infringing content?)
+                    </span>
+                  </Label>
+                  <Input
+                    id="name"
+                    placeholder="http://www.website-from-where data-is-stolen.com"
+                  />
                 </div>
               </div>
-              <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="framework">
-                  Select the reason for Infringment
+
+              <div className="grid w-full gap-1.5">
+                <Label htmlFor="framework" className="mb-1.5">
+                  Select the reason for infringement
                 </Label>
                 <Select>
                   <SelectTrigger id="framework">
@@ -92,44 +114,52 @@ const TakedownForm = () => {
                     <SelectItem value="nuxt">Temp 4</SelectItem>
                   </SelectContent>
                 </Select>
+              </div>
 
-                <div className="grid w-full gap-1.5">
-                  <Label htmlFor="message">
-                    Detailed description of the infringement that took place
-                  </Label>
-                  <Textarea
-                    placeholder="Type your message here."
-                    id="message"
-                  />
-                  <div className="flex justify-between">
-                    <Button variant="outline">Generate Notice</Button>
+              <div className="grid w-full gap-1.5">
+                <Label htmlFor="message" className="mb-1.5">
+                  Detailed description of the infringement that took place
+                </Label>
+                <Textarea
+                  placeholder="Type your message here."
+                  id="message"
+                  className="leading-9 mb-1.5"
+                />
+                <div className="flex justify-between">
+                  <Button variant="outline">Generate Notice</Button>
 
-                    <Dialog>
-                      <DialogTrigger>Need help?</DialogTrigger>
-                      <DialogContent>
-                        <ul>
-                          <li>Step 1: Lorem ipsum dolor sit amet.</li>
-                          <li>Step 2: Consectetur adipiscing elit.</li>
-                          <li>Step 3: Sed do eiusmod tempor incididunt.</li>
-                          <li>Step 4: Ut labore et dolore magna aliqua.</li>
-                          <li>Step 5: Enim ad minim veniam.</li>
-                        </ul>
-                      </DialogContent>
-                    </Dialog>
-                  </div>
+                  <Dialog>
+                    <DialogTrigger>Need help?</DialogTrigger>
+                    <DialogContent>
+                      <ul>
+                        <li>Step 1: Lorem ipsum dolor sit amet.</li>
+                        <li>Step 2: Consectetur adipiscing elit.</li>
+                        <li>Step 3: Sed do eiusmod tempor incididunt.</li>
+                        <li>Step 4: Ut labore et dolore magna aliqua.</li>
+                        <li>Step 5: Enim ad minim veniam.</li>
+                      </ul>
+                    </DialogContent>
+                  </Dialog>
                 </div>
+              </div>
 
-                <div className="grid w-full gap-1.5">
-                  <Label htmlFor="message">Generated Notice</Label>
-                  <Textarea
-                    placeholder="Type your message here."
-                    id="message"
-                    className=""
-                  />
-                  <div className="flex gap-5">
-                    <Button variant="outline">Download Notice</Button>
+              <div className="grid w-full gap-1.5">
+                <Label htmlFor="message" className="mb-1.5">
+                  Generated Notice
+                </Label>
+                <Textarea
+                  placeholder="Type your message here."
+                  id="message"
+                  className="leading-9 mb-1.5"
+                />
+                <div className="flex justify-between">
+                  <div className="flex gap-4">
+                    <Button className="bg-[#e11318] hover:bg-[#E51015]">
+                      Download Notice
+                    </Button>
                     <Button variant="outline">Send e-mail</Button>
                   </div>
+                  <CopyButton />
                 </div>
               </div>
             </div>
